@@ -56,10 +56,13 @@ async def buyProduct(buyer: str, prod_name: str):
             else:
                 purchased[buyer] = 1;
                 return {"result:": "ok"}
+        else:
+            message = f"Error: no product {prod_name}."
+            return {"result": message}
+
     else:
         message = f"Error: no buyer {buyer}."
         return {"result": message}
-
 
 @app.get("/buyers/{buyer}/purchased")
 async def getPurchased(buyer: str):
